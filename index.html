@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Sokelf LoFi plyer's</title>
+	<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<script src="https://www.youtube.com/player_api"></script> <!-- api -->
+<div id="player" class="player"></div> <!-- контейнер для плеера -->
+<select id="select" class="players">
+  <option value="">Выберите видео</option>
+  <option value="jfKfPfyJRdk">Lofi Study</option>
+  <option value="MVPTGNGiI-4">Lofi Gaming</option>
+  <option value="rUxyKA_-grg">Lofi Chill</option>
+ <option value="fWJrwGR86vI">BloodEarth</option> 
+</select>
+<script> // создание и обработка плеера
+  document.getElementById('select').addEventListener("change", function() {
+    var videoId = this.value;
+    if(videoId) {
+      player.loadVideoById(videoId);
+    }
+  });
+</script>
+<script class="player_options">
+  var player;
+  function onYouTubePlayerAPIReady() {
+    player = new YT.Player('player', {
+      height: '360',
+      width: '640',
+      videoId: 'jfKfPfyJRdk',
+      playerVars: {
+        autoplay: 1,
+        controls: 1,
+        fs: 1,
+        rel: 0,
+        showinfo: 0
+      },
+      events: {
+        'onReady': onPlayerReady,
+        'onStateChange': onPlayerStateChange
+      }
+    });
+  }
+  function onPlayerReady(event) {
+    event.target.playVideo();
+  }
+  function onPlayerStateChange(event) {
+    //...
+  }
+</script>
+<select id="chatSelect" class="chats">
+  <option value="">Выберите чат</option>
+  <option value="https://www.youtube.com/live_chat?is_popout=1&v=jfKfPfyJRdk">Lofi Study chat</option>
+  <option value="https://www.youtube.com/live_chat?is_popout=1&v=MVPTGNGiI-4">Lofi Gaming chat</option>
+  <option value="https://www.youtube.com/live_chat?is_popout=1&v=rUxyKA_-grg">Lofi Chill chat</option>
+  <option value="https://www.youtube.com/live_chat?is_popout=1&v=fWJrwGR86vI">BloodEarth chat</option> 
+</select>
+<div id="chatFrame" class="chat"></div>
+<script>
+	const chatSelect = document.getElementById("chatSelect");
+const chatFrame = document.getElementById("chatFrame");
+
+chatSelect.addEventListener("change", function() {
+  const selectedValue = this.value;
+  chatFrame.innerHTML = `<iframe src="${selectedValue}" width="480" height="500"></iframe>`;
+});
+</script>
+<div id="player2" class="player2"></div>
+<select id="select2" class="players2">
+  <option value="">Выберите видео</option>
+  <option value="jfKfPfyJRdk">Lofi Study</option>
+  <option value="MVPTGNGiI-4">Lofi Gaming</option>
+  <option value="rUxyKA_-grg">Lofi Chill</option>
+ <option value="VdYm2rCgQ_w">BloodEarth</option> 
+</select>
+<div id="player2" class="player2"></div>
+<script class="player_options2">
+	var player;
+	function onYouTubePlayerAPIReady() {
+	  player = new YT.Player('player2', {
+		height: '360',
+		width: '640',
+		videoId: 'jfKfPfyJRdk',
+		playerVars: {
+		  autoplay: 1,
+		  controls: 1,
+		  fs: 1,
+		  rel: 0,
+		  showinfo: 0
+		},
+		events: {
+		  'onReady': onPlayerReady,
+		  'onStateChange': onPlayerStateChange
+		}
+	  });
+	}
+	function onPlayerReady(event) {
+	  event.target.playVideo();
+	}
+	function onPlayerStateChange(event) {
+	  //...
+	}
+  </script>
+</body>
+</html>
